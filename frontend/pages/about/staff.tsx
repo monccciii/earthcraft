@@ -45,7 +45,7 @@ export default function Staff() {
       </Head>
       <div className='bg-[#292929]'>
     <Navbar />
-    <p className='text-7xl text-center mt-[5vh] text-white tracking-widest'>ABOUT&nbsp;&nbsp;US</p>
+    <p className='text-7xl text-center mt-[5vh] text-white tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>ABOUT&nbsp;US</p>
     <div className='mt-[20vh]'>
       {staffMembers.map((member, index) => {
         return (

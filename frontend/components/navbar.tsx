@@ -59,7 +59,7 @@ useEffect(() => {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/getting-started/create"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
                     'block bg-black px-4 py-2 text-sm'
@@ -72,7 +72,7 @@ useEffect(() => {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/getting-started/join"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
                     'block bg-black px-4 py-2 text-sm'
@@ -113,7 +113,7 @@ useEffect(() => {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  href="/about/staff"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
                     'block bg-black px-4 py-2 text-sm'
