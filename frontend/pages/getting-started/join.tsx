@@ -14,7 +14,7 @@ export default function joinAnexistingnation() {
       </Head>
       <div className='bg-[#292929] h-screen'>
     <Navbar />
-    <p className='mt-[5vh] bg-mcbg2 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-7xl tracking-widest'>JOIN A NATION</p>
+    <p className='mt-[5vh] bg-mcbg2 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>JOIN A NATION</p>
     <div className='flex'>
     <p className='mt-[20vh] mx-auto text-center w-full sm:w-[70vw] text-white text-3xl'>Joining an existing nation on the EarthCraft server can be a great way to connect with other players and work towards shared goals. When joining a nation, you become part of a community of players who share a common purpose and can support each other in achieving their goals. Whether you are looking for mutual protection, access to resources, or the opportunity to work towards a shared goal, joining a nation can provide many benefits.<br/><br/>
 

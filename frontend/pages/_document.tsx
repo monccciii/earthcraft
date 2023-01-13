@@ -8,7 +8,7 @@ export default function Document() {
           <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet" />
                 
         </Head>
-        <body>
+        <body className='cursor-pointer'>
           <Main />
           <NextScript />
         </body>

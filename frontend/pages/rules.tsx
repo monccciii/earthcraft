@@ -14,7 +14,7 @@ export default function Rules() {
       </Head>
       <div className='bg-[#292929]'>
     <Navbar />
-    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest bg-mcbg2 bg-fixed bg-no-repeat bg-cover '>RULES</p>
+    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest bg-mcbg2 bg-fixed bg-no-repeat bg-cover' style={{fontFamily:"'Minecraftia', sans-serif"}}>RULES</p>
     <div className='flex'>
     <p className='mt-[10vh] font-extralight rounded-xl p-10 mx-auto text-center text-white text-3xl w-[60vw]'>
         1. Be kind and civil! It&apos;s okay to have opinions and to express them, but be nice about it.<br/>

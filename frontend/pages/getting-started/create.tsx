@@ -17,26 +17,26 @@ export default function createANation() {
     <div className='text-center text-white'>
       <div className='sm:flex mt-[5vh]'>
         <div className='mx-auto'>
-        <p className='text-4xl tracking-widest'>NEW NATIONS GET:</p>
-        <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]'>1-3</p>
+        <p className='text-4xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>NEW NATIONS GET:</p>
+        <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]' style={{fontFamily:"'Minecraftia', sans-serif"}}>1-3</p>
         <p className='text-2xl mt-[2vh]'>countries</p>
         </div>
         <div className='mx-auto'>
-        <p className='text-4xl mt-[10vh] sm:mt-[0vh] tracking-widest'>NATIONS CAN OWN A MAXIMUM OF:</p>
+        <p className='text-4xl mt-[10vh] sm:mt-[0vh] tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>NATIONS CAN OWN A MAXIMUM OF:</p>
         <div className='grid grid-cols-1 sm:grid-cols-2'>
           <div>
-            <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]'>3</p>
+            <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]' style={{fontFamily:"'Minecraftia', sans-serif"}}>3</p>
             <p className='mt-[2vh] text-2xl'>countries (with one citizen)</p>
           </div>
           <div>
-            <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]'>7</p>
+            <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]' style={{fontFamily:"'Minecraftia', sans-serif"}}>7</p>
             <p className='mt-[2vh] text-2xl'>countries (with three citizens)</p>
           </div>
         </div>
         </div>
       </div>
     </div>
-    <p className='mt-[20vh] text-center text-white tracking-widest text-5xl sm:text-7xl'>STARTING A NATION</p>
+    <p className='mt-[20vh] text-center text-white tracking-widest text-5xl sm:text-7xl' style={{fontFamily:"'Minecraftia', sans-serif"}}>STARTING A NATION</p>
     <div className='flex'>
     <p className='mx-auto text-center font-extralight text-white sm:w-[60vw] mt-[5vh] text-3xl'>
     On the Earthcraft server, nations are groups of players who come together for various purposes such as mutual protection, resource sharing, and goal achievement. Nations can be created by any group of players who wish to establish their own nation, or individual players can choose to join an existing nation.
@@ -47,7 +47,7 @@ Nations start out with 1-3 countries, which are designated areas on the server m
     </p>
       
       </div>
-      <p className='mt-[20vh] text-center text-white tracking-widest text-5xl sm:text-7xl'>HOW TO START YOUR OWN NATION</p>
+      <p className='mt-[20vh] text-center text-white tracking-widest text-5xl sm:text-7xl' style={{fontFamily:"'Minecraftia', sans-serif"}}>HOW TO START YOUR OWN NATION</p>
       <p className='mx-auto text-center font-extralight text-white sm:w-[60vw] mt-[5vh] text-3xl'>
       1.Decide on a name for your nation. (eg: People&apos;s Republic of China)<br/>
 

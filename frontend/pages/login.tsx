@@ -14,7 +14,7 @@ export default function myEarthcraft() {
       </Head>
       <div className='bg-[#292929] h-screen'>
     <Navbar />
-    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest'>LOGIN WITH DISCORD</p>
+    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>LOGIN WITH DISCORD</p>
     </div>
     </>
   )

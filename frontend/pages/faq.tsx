@@ -14,7 +14,7 @@ export default function faq() {
       </Head>
       <div className='bg-[#292929]'>
     <Navbar />
-    <p className='mt-[5vh] bg-mcbg1 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-7xl tracking-widest'>FREQUENTLY ASKED QUESTIONS</p>
+    <p className='mt-[5vh] bg-mcbg1 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>FREQUENTLY ASKED QUESTIONS</p>
     <div className='mt-[20vh] flex'>
     <p className='mx-auto text-white font-extralight w-[60vw] text-center text-3xl'>
     Q: What is the server IP? <br />
