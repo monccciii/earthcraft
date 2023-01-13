@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -7,6 +8,9 @@ import Sidebar from '../components/sidebar'
 
 export default function Home() {
   const router = useRouter();
+
+
+  
   return (
     <>
       <Head>
@@ -36,7 +40,7 @@ export default function Home() {
         <div className='mt-[10vh]  flex gap-5'>
           <button onClick={() => router.push('/getting-started/create')} className='bg-white rounded p-2 sm:p-10 tracking-widest text-2xl sm:text-5xl font-light'>GET STARTED</button>
           <button onClick={() => router.push('/about')}className='bg-white rounded p-2 sm:p-10 tracking-widest text-2xl sm:text-5xl font-light'>ABOUT</button>
-
+      
         </div>
       </div>
     </div>
