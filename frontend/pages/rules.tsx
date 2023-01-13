@@ -14,9 +14,9 @@ export default function Rules() {
       </Head>
       <div className='bg-[#292929]'>
     <Navbar />
-    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest'>RULES</p>
+    <p className='mt-[5vh] text-center text-white text-7xl tracking-widest bg-mcbg2 bg-fixed bg-no-repeat bg-cover '>RULES</p>
     <div className='flex'>
-    <p className='mt-[10vh] bg-mcbg2 bg-fixed bg-no-repeat bg-cover font-extralight rounded-xl p-10 mx-auto text-center text-white text-3xl w-[60vw]'>
+    <p className='mt-[10vh] font-extralight rounded-xl p-10 mx-auto text-center text-white text-3xl w-[60vw]'>
         1. Be kind and civil! It&apos;s okay to have opinions and to express them, but be nice about it.<br/>
 
 <br />2. The following is <span className='text-red-500'>100%</span> prohibited, no exceptions: harassment, abuse, offensive language, any form of discrimination, sexual content, links and/or discussion related to pirating or otherwise illegal content/activities, sharing personal/confidential information about another user, self promotion or advertising via DM/chat.<br/>
