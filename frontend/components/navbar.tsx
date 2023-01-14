@@ -40,7 +40,7 @@ useEffect(() => {
         <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-md text-white  ">
-          Getting Started
+        <span onClick={() => router.push('/getting-started')}>Getting Started</span>
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -93,8 +93,8 @@ useEffect(() => {
 
         <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-md text-white">
-          About
+        <Menu.Button  className="inline-flex w-full justify-center rounded-md text-white">
+          <span onClick={() => router.push('/about')}>About</span>
           <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -110,7 +110,7 @@ useEffect(() => {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-black shadow-lg focus:outline-none">
           <div className="py-1">
-            <Menu.Item>
+            <Menu.Item >
               {({ active }) => (
                 <a
                   href="/about/staff"
