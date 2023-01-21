@@ -9,7 +9,7 @@ export default function AllBusinesses() {
   const [businessList, setBusinessList] = useState();
   var getcompanyforarray = []
   function getBusinesses() {
-    const url = `http://localhost:3002/getbusinesses`
+    const url = `http://localhost:3002/getBusinesses`
     axios.get(url)
     .then(res => {
         console.log(res);

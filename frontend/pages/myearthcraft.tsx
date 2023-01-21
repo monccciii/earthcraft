@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 
 export default function MyEarthcraft() {
   const [userInfo, setUserInfo] = useState();
