@@ -12,7 +12,7 @@ export default function Discord() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='bg-mcbg2 bg-fixed bg-no-repeat bg-cover py-1 h-screen'>
+      <div className='bg-mcbg2 bg-fixed bg-no-repeat bg-cover h-screen'>
     <Navbar />
     <p className='mt-[5vh] text-center text-white text-4xl sm:text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>JOIN EARTHCRAFT&apos;S DISCORD</p>
     <div className='flex'>
