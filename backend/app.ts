@@ -153,8 +153,6 @@ app.get("/auth/discord", async (req, res) => {
             access_token,
             expires_in,
         } = returned;
-
-
         const data = {
             user: <User>await fetch(`https://discordapp.com/api/users/@me`, {
                 headers: {
@@ -169,7 +167,7 @@ app.get("/auth/discord", async (req, res) => {
             }
         };
 
-        return res.redirect(`:3000/auth/discord?data=${JSON.stringify(data)}`);
+        return res.redirect(`${req.protocol}://${req.hostname}:3000/auth/discord?data=${JSON.stringify(data)}`);
     } catch (err) {
         console.log(err);
         res.sendStatus(400);
