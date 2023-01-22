@@ -54,7 +54,7 @@ app.post("/addMember", (req: Request<{
 }>, res) => {
     const USER_ID = req.params.userid
     const NATION_ID = req.params.nationid
-    const query = `INSERT INTO NationsApplications (${USER_ID}, ${NATION_ID}, Pending)`
+    const query = `INSERT INTO NationsApplications (USER_ID, NATION_ID, APPLICATION_STATUS) VALUES (${USER_ID}), (${NATION_ID}), ("Pending")`
 
     connection.query(query, (err, result) => {
         if (err) {
