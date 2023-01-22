@@ -4,14 +4,27 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 export default function Nations() {
   const [nationList, setNationList] = useState();
-  const [modalOpen, setmodalOpen] = useState(false);
+  const [modalOpen, setmodalOpen] = useState();
+  const url = `http://localhost:3002/`
+  const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
+
+ 
+    if (cookie) {
+      const {
+        id,
+        username,
+        discriminator,
+        avatar
+      } = cookie;
+  
+    }  
 
   function getNations() {
-    const url = `http://localhost:3002/getnations`
-    axios.get(url)
+    axios.get(url + 'getnations')
     .then(res => {
         console.log(res);
         setNationList(res.data);
@@ -19,6 +32,7 @@ export default function Nations() {
     .catch(err => console.log(err));
   }
 
+ 
   function ifIsloggedin() {
 
   }
@@ -44,9 +58,10 @@ export default function Nations() {
     <div className=''>
       {nationList ? 
       nationList.map((nation, index) => {
+        
         return (
             <div className='mb-[5vh] p-5' key={index}>
-              {modalOpen ? (
+              {modalOpen === index ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -62,7 +77,7 @@ export default function Nations() {
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setmodalOpen(false)}
+                    onClick={() => setmodalOpen()}
                   >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
@@ -82,13 +97,19 @@ export default function Nations() {
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setmodalOpen(false)}
+                    onClick={() => setmodalOpen()}
                   >
                     Close
                   </button>
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
+                    onClick={()=>{
+                      axios.post(`${url}addMember`, {
+                        userid: cookie.id,
+                        nationid: nation.id
+                      })             
+                    }}
                   >
                     Join Nation
                   </button>
@@ -108,7 +129,7 @@ export default function Nations() {
                 <div >
                 <p className='text-white w-[60vw] text-center mx-auto text-2xl mb-2' style={{fontFamily:"'Minecraftia', sans-serif"}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae vel beatae natus eveniet ratione temporibus aperiam harum alias officiis assumenda officia quibusdam deleniti eos cupiditate dolore doloribus!</p>
                 <div className='flex'>
-                <button className='mx-auto border-white border-2 text-white p-5 rounded' onClick={() => setmodalOpen(true)}>Apply</button>
+                <button className='mx-auto border-white border-2 text-white p-5 rounded' onClick={() => setmodalOpen(index)}>Apply</button>
                 <button className='mx-auto bg-white p-5 rounded'>View Page</button>
                 </div>
                 </div>

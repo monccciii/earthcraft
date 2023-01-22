@@ -7,27 +7,8 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export default function MyEarthcraft() {
-  const [userInfo, setUserInfo] = useState();
   const router = useRouter();
-  function getUserInfo(userID) {
-    axios
-        .get(
-          `https://discord.com/api/users/@me`, 
-          {headers:{ authorization: 'Bearer ' + userID}})
-          .then(res => {
-          console.log(res);
-          setUserInfo(res.data);
-      })
-      .catch(err => console.log(err));
-  }
-  useEffect(() => {
-    if (localStorage.getItem('userid')) {
-      getUserInfo(localStorage.getItem('userid'))
 
-    } else {
-      router.push('/')
-    }
-  })
   
   return (
     <>

@@ -29,7 +29,7 @@ app.get("/", (_, res) => {
 
 //nations
 app.get("/getNations", (_, res) => {
-    connection.query("SELECT FULL_NAME, FLAG_URL FROM NationsInfo", (err, result) => {
+    connection.query("SELECT FULL_NAME, FLAG_URL, id FROM NationsInfo", (err, result) => {
         if (err) {
             res.status(500).send(err.message);
         } else {
@@ -39,7 +39,7 @@ app.get("/getNations", (_, res) => {
 });
 
 app.get("/getAllNationInfo", (_, res) => {
-    connection.query("SELECT FULL_NAME, FLAG_URL, ANTHEM, RELIGIOn, MAIN_COUNTRY, ECONOMIC_SYSTEM, GOVERNMENT_SYSTEM, UN_MEMBER, DISCORD_SERVER_ID FROM NationsInfo", (err, result) => {
+    connection.query("SELECT FULL_NAME, FLAG_URL, ANTHEM, RELIGION, MAIN_COUNTRY, ECONOMIC_SYSTEM, GOVERNMENT_SYSTEM, UN_MEMBER, DISCORD_SERVER_ID FROM NationsInfo", (err, result) => {
         if (err) {
             res.status(500).send(err.message);
         } else {

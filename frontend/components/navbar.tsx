@@ -26,7 +26,6 @@ export default function Navbar() {
         avatar
       } = cookie;
   
-      console.log(cookie.id);
     }
 
     useEffect(()=>{
@@ -193,6 +192,7 @@ export default function Navbar() {
                    onClick={()=>{
                     document.cookie = null;
                     console.log('removed')
+                    if (cookie) for (const key of Object.keys(cookie)) removeCookie(key, { path: "/" });
                    }}
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',
