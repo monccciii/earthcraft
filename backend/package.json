@@ -5,7 +5,7 @@
   "main": "app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon npx ts-node -T .",
+    "dev": "nodemon --watch \"src/**\" --ext \"ts,json\" --exec \"npx ts-node .\"",
     "start": "npx ts-node ."
   },
   "author": "",

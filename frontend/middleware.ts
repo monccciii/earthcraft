@@ -19,7 +19,12 @@ export function middleware(req: NextRequest) {
                     avatar
                 }
             } = JSON.parse(data);
-            const res = new NextResponse(`Hello ${username}!`)
+            const url = req.nextUrl.clone();
+
+            url.pathname = "/";
+            url.searchParams.delete("data");
+
+            const res = NextResponse.redirect(url);
             const maxAge = parseInt(expires_in) * 1000;
 
             res.cookies

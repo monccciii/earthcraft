@@ -15,7 +15,7 @@ const oauth = new DiscordOauth2({
 });
 
 //REPLACE
-//app.use(cors({ origin: "::3000" }));
+//app.use(cors({ origin: "::*" }));
 //
 
 
@@ -167,7 +167,7 @@ app.get("/auth/discord", async (req, res) => {
             }
         };
 
-        return res.redirect(`${req.protocol}://${req.hostname}:3000/auth/discord?data=${JSON.stringify(data)}`);
+        return res.redirect(`${req.protocol}://${req.hostname}:3000/auth/discord?data=${encodeURIComponent(JSON.stringify(data))}`);
     } catch (err) {
         console.log(err);
         res.sendStatus(400);
