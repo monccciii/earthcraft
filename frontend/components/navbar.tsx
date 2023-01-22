@@ -10,26 +10,17 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import classNames from 'classnames';
 import axios from 'axios';
+import { cookies } from 'next/headers';
 
 
 export default function Navbar() {
 const router = useRouter()
-const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+const nextCookies = cookies();
+const id = nextCookies.get('id')
 
-const getUserInfo = async () => {
-  try {
-    const res = await axios.get('http://localhost:3002/userInfo');
-    console.log(res.data)
-  
-  } catch (err) {
-    console.error(err);
-  }
-};
 useEffect(()=>{
-  getUserInfo()
-
-}, [])
-
+  console.log(id)
+})
   return (
     <div className='bg-black opacity-90 sticky top-0 p-5 text-white font-extralight text-xl flex items-center justify-between'>
     
