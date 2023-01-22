@@ -9,18 +9,25 @@ import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import classNames from 'classnames';
-import axios from 'axios';
-import { cookies } from 'next/headers';
+import Link from 'next/link';
+import { useCookies } from 'react-cookie';
 
 
 export default function Navbar() {
-const router = useRouter()
-const nextCookies = cookies();
-const id = nextCookies.get('id')
+  const router = useRouter()
+  const [cookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
-useEffect(()=>{
-  console.log(id)
-})
+  if (cookie) {
+    const {
+      id,
+      username,
+      discriminator,
+      avatar
+    } = cookie;
+
+    console.log(cookie);
+  }
+
   return (
     <div className='bg-black opacity-90 sticky top-0 p-5 text-white font-extralight text-xl flex items-center justify-between'>
     
@@ -58,7 +65,7 @@ useEffect(()=>{
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/getting-started/create"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
@@ -66,12 +73,12 @@ useEffect(()=>{
                   )}
                 >
                   Create A Nation
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Link
                   href="/getting-started/join"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
@@ -79,7 +86,7 @@ useEffect(()=>{
                   )}
                 >
                   Join A Nation
-                </a>
+                </Link>
               )}
             </Menu.Item>
            
@@ -112,7 +119,7 @@ useEffect(()=>{
           <div className="py-1">
             <Menu.Item >
               {({ active }) => (
-                <a
+                <Link
                   href="/about/staff"
                   className={classNames(
                     active ? ' text-slate-200' : 'text-white',
@@ -120,7 +127,7 @@ useEffect(()=>{
                   )}
                 >
                   Staff
-                </a>
+                </Link>
               )}
             </Menu.Item>
            
@@ -150,7 +157,7 @@ useEffect(()=>{
              <div className="py-1">
              <Menu.Item >
                  {({ active }) => (
-                   <a
+                   <Link
                      href="/mybusinesses"
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',
@@ -158,12 +165,12 @@ useEffect(()=>{
                      )}
                    >
                      My Businesses BE
-                   </a>
+                   </Link>
                  )}
                </Menu.Item>
                <Menu.Item >
                  {({ active }) => (
-                   <a
+                   <Link
                      href="/mynations"
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',
@@ -171,7 +178,7 @@ useEffect(()=>{
                      )}
                    >
                      My Nations BE
-                   </a>
+                   </Link>
                  )}
                </Menu.Item>
                <Menu.Item >
