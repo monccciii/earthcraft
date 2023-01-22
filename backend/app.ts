@@ -52,17 +52,8 @@ app.post("/addMember", (req: Request<{
     userid: string
     nationid: string
 }>, res) => {
-    const USER_ID = req.params.userid
-    const NATION_ID = req.params.nationid
-    const query = `INSERT INTO NationsApplications (USER_ID, NATION_ID, APPLICATION_STATUS) VALUES (${USER_ID}), (${NATION_ID}), ("Pending")`
-
-    connection.query(query, (err, result) => {
-        if (err) {
-            res.status(500).send(err.message);
-        } else {
-            res.json(result);
-        }
-    });
+    console.log(req.body)
+   
 })  
 
 
