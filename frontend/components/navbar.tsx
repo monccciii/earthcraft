@@ -16,7 +16,6 @@ import { useCookies } from 'react-cookie';
 export default function Navbar() {
   const router = useRouter()
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
-
  
     if (cookie) {
       const {
@@ -28,9 +27,6 @@ export default function Navbar() {
   
     }
 
-    useEffect(()=>{
-      console.log(cookie)
-    })
 
   return (
     <div className='bg-black opacity-90 sticky top-0 p-5 text-white font-extralight text-xl flex items-center justify-between'>
