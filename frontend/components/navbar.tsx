@@ -17,20 +17,17 @@ export default function Navbar() {
   const router = useRouter()
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
- 
-    if (cookie) {
-      const {
-        id,
-        username,
-        discriminator,
-        avatar
-      } = cookie;
-  
-      console.log(cookie.id);
-    }
-
     useEffect(()=>{
-      console.log(cookie)
+      if (cookie) {
+        const {
+          id,
+          username,
+          discriminator,
+          avatar
+        } = cookie;
+    
+        console.log(cookie.id);
+      }
     })
 
   return (
@@ -191,8 +188,7 @@ export default function Navbar() {
                  {({ active }) => (
                    <p
                    onClick={()=>{
-                    document.cookie = null;
-                    console.log('removed')
+                    if (cookie) for (const key of Object.keys(cookie)) removeCookie(key, { path: "/" });
                    }}
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',
