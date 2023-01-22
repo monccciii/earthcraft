@@ -14,9 +14,8 @@ const oauth = new DiscordOauth2({
     redirectUri: process.env.REDIRECT_URI,
 });
 
-//REPLACE
-//app.use(cors({ origin: "::*" }));
-//
+app.use(cors({ origin: "http://localhost:3000" }));
+
 
 
 

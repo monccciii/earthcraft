@@ -15,18 +15,23 @@ import { useCookies } from 'react-cookie';
 
 export default function Navbar() {
   const router = useRouter()
-  const [cookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
+  const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
-  if (cookie) {
-    const {
-      id,
-      username,
-      discriminator,
-      avatar
-    } = cookie;
+ 
+    if (cookie) {
+      const {
+        id,
+        username,
+        discriminator,
+        avatar
+      } = cookie;
+  
+      console.log(cookie.id);
+    }
 
-    console.log(cookie);
-  }
+    useEffect(()=>{
+      console.log(cookie)
+    })
 
   return (
     <div className='bg-black opacity-90 sticky top-0 p-5 text-white font-extralight text-xl flex items-center justify-between'>
@@ -135,7 +140,8 @@ export default function Navbar() {
         </Menu.Items>
       </Transition>
     </Menu>
-        {5>5 ? 
+    
+        {cookie.id ? (
          <Menu as="div" className="relative inline-block text-left">
          <div>
            <Menu.Button  className="inline-flex w-full justify-center rounded-md text-white">
@@ -184,12 +190,10 @@ export default function Navbar() {
                <Menu.Item >
                  {({ active }) => (
                    <p
-                     onClick={() => {
-                      localStorage.removeItem('userid')
-                      setUserID('')
-                      router.push('/')
-                      window.location.reload();
-                     }}
+                   onClick={()=>{
+                    document.cookie = null;
+                    console.log('removed')
+                   }}
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',
                        'block bg-black px-4 py-2 text-sm'
@@ -203,7 +207,7 @@ export default function Navbar() {
              </div>
            </Menu.Items>
          </Transition>
-       </Menu> :         <li onClick={() => router.push('https://discord.com/api/oauth2/authorize?client_id=1061517929205747823&redirect_uri=http%3A%2F%2Flocalhost%3A3002%2Fauth%2Fdiscord&response_type=code&scope=identify%20guilds%20email')}>Login</li>}
+       </Menu> ) : (        <li onClick={() => router.push('/auth/login')}>Login</li> ) }
 
 
 
