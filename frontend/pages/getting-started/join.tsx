@@ -12,7 +12,7 @@ export default function joinAnexistingnation() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='bg-[#292929] h-screen'>
+      <div className='bg-[#292929]'>
     <Navbar />
     <p className='mt-[5vh] bg-mcbg2 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>JOIN A NATION</p>
     <div className='flex'>
@@ -26,6 +26,8 @@ One of the key advantages of joining an existing nation is that you can tap into
 
 To join an existing nation, go to the Nations page</p>
 </div>
+<div className='pb-[100px]'></div>
+
     </div>
     </>
   )

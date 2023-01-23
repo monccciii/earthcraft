@@ -5,10 +5,19 @@ import Navbar from '../components/navbar'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie';
+
 
 export default function MyEarthcraft() {
   const router = useRouter();
+  const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
+
+  useEffect(() => {
+    if (!cookie.id) {
+      router.push('/')
+    }
+  })
   
   return (
     <>

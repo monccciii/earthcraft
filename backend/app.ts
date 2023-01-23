@@ -16,6 +16,7 @@ const oauth = new DiscordOauth2({
 
 app.use(cors({ origin: "http://localhost:3000" }));
 
+app.use(express.json())
 
 
 
@@ -38,8 +39,11 @@ app.get("/getNations", (_, res) => {
     });
 });
 
-app.get("/getAllNationInfo", (_, res) => {
-    connection.query("SELECT FULL_NAME, FLAG_URL, ANTHEM, RELIGION, MAIN_COUNTRY, ECONOMIC_SYSTEM, GOVERNMENT_SYSTEM, UN_MEMBER, DISCORD_SERVER_ID FROM NationsInfo", (err, result) => {
+app.post("/getAllNationInfo", (req: Request<{
+    nationid: string
+}>, res) => {
+    const NATION_ID = req.body.nationid;
+    connection.query(`SELECT ANTHEM, RELIGION, MAIN_COUNTRY, ECONOMIC_SYSTEM, GOVERNMENT_SYSTEM, UN_MEMBER, DISCORD_SERVER_ID FROM NationsInfo WHERE id = ${NATION_ID}`, (err, result) => {
         if (err) {
             res.status(500).send(err.message);
         } else {
@@ -52,53 +56,98 @@ app.post("/addMember", (req: Request<{
     userid: string
     nationid: string
 }>, res) => {
-    console.log(req.body)
-   
+    const USER_ID = req.body.userid;
+const NATION_ID = req.body.nationid;
+
+connection.query("INSERT INTO NationsApplications SET USER_ID = ?, NATION_ID = ?, APPLICATION_STATUS = ?, DATETIME_VAR = NOW()", [USER_ID, NATION_ID, "Pending"], (err, result) => {
+    if (err) {
+        console.error(err);
+        res.status(500).send(err.message);
+    } else {
+        res.json(result);
+    }
+});
 })  
 
 
 //businesses
-app.get("/getBusinesses", (_, res) => {
-    connection.query("SELECT * FROM Businesses WHERE IS_CLOSED IS FALSE; SELECT TYPE, OWNER_ID, PARENT_COMPANY, HEADQUARTERS FROM Businesses", [1, 2], (err, result) => {
-        if (err) {
-            res.status(500).send(err.message);
-        }
-
-        const businesses = result[0]
-        const businessInfo = result[1]
-
-        res.send([businesses, businessInfo]);
-
-        // here make sure to create a conditional that checks whether the business has a PARENT_COMPANY
-        // and if it does make sure to find the parent company using another query
-    });
-
-  
-
-
+app.get("/getBusinesses", async (_, res) => {
+    try {
+        const query = `SELECT b.id, b.BUSINESS_NAME, b.TYPE, b.OWNER_ID, p.BUSINESS_NAME as PARENT_COMPANY, h.BUSINESS_NAME as HEADQUARTERS, b.LOGO_URL, b.FOUNDING_DATETIME 
+        FROM Businesses b 
+        LEFT JOIN Businesses p ON b.PARENT_COMPANY = p.id 
+        LEFT JOIN Businesses h ON b.HEADQUARTERS = h.id 
+        WHERE b.IS_CLOSED IS FALSE`;
+        connection.query(query, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send(err.message);
+                return;
+            }
+            res.json(result);
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send(err.message);
+    }
 });
+
+
+
 
 
 
 // my businesses
-app.get("/myBusinesses", (_, res) => {
-    const query = "SELECT BUSINESS_NAME, TYPE, OWNER_ID, PARENT_COMPANY, HEADQUARTERS, LOGO_URL, FOUNDING_DATETIME FROM Businesses WHERE OWNER_ID = ? AND IS_CLOSED IS FALSE"
+app.post("/myBusinesses", (req: Request<{
+    ownerid: string
+}>, res) => {
+    const OWNER_ID = req.body.ownerid;
+    const query = `SELECT b1.id, b1.BUSINESS_NAME, b1.TYPE, b1.OWNER_ID, b1.LOGO_URL, b1.FOUNDING_DATETIME, 
+    b2.BUSINESS_NAME as PARENT_COMPANY, b3.BUSINESS_NAME as HEADQUARTERS 
+    FROM Businesses b1 
+    LEFT JOIN Businesses b2 ON b1.PARENT_COMPANY = b2.id
+    LEFT JOIN Businesses b3 ON b1.HEADQUARTERS = b3.id
+    WHERE b1.OWNER_ID = ${OWNER_ID} AND b1.IS_CLOSED IS FALSE`;
 
     connection.query(query, (err, result) => {
         if (err) {
             res.status(500).send(err.message);
-        } else {
-            res.json(result);
+            return;
         }
+        res.json(result);
     });
 });
 
 
-// my nations
-app.get("/myNations", (_, res) => {
-  //make a query condition that checks whether or not the user is in the nation
-  
-    connection.query("SELECT FULL_NAME, FLAG_URL FROM NationsInfo", (err, result) => {
+app.get("/myNations", (req: Request<{
+    userid: string
+}>, res) => {
+    const USER_ID = req.body.userid;
+
+    connection.query(`
+        SELECT
+            nu.PARENT_NATION_ID,
+            nu.ROLE_VAR,
+            ni.FULL_NAME,
+            ni.ABBREVIATION,
+            ni.FLAG_URL,
+            ni.ANTHEM,
+            ni.RELIGION,
+            ni.MAIN_COUNTRY,
+            ni.ECONOMIC_SYSTEM,
+            ni.GOVERNMENT_SYSTEM,
+            ni.UN_MEMBER,
+            (SELECT COUNT(*) FROM NationsUsers WHERE PARENT_NATION_ID = nu.PARENT_NATION_ID) as TOTAL_CITIZENS
+        FROM
+            NationsUsers nu
+        LEFT JOIN
+            NationsInfo ni
+        ON
+            nu.PARENT_NATION_ID = ni.id
+        WHERE
+            nu.USER_ID = ?
+    `,
+    [USER_ID], (err, result) => {
         if (err) {
             res.status(500).send(err.message);
         } else {
@@ -106,6 +155,7 @@ app.get("/myNations", (_, res) => {
         }
     });
 });
+
 
 
 //oauth

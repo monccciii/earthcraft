@@ -16,16 +16,7 @@ import { useCookies } from 'react-cookie';
 export default function Navbar() {
   const router = useRouter()
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
- 
-    if (cookie) {
-      const {
-        id,
-        username,
-        discriminator,
-        avatar
-      } = cookie;
-  
-    }
+     
 
 
   return (

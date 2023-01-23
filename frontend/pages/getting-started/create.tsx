@@ -18,7 +18,7 @@ export default function createANation() {
       <div className='sm:flex mt-[5vh]'>
         <div className='mx-auto'>
         <p className='text-4xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>NEW NATIONS GET:</p>
-        <p className='mt-[5vh] text-5xl sm:text-9xl lg:text-[10rem]' style={{fontFamily:"'Minecraftia', sans-serif"}}>1-3</p>
+        <p className='mt-[5vh] text-5xl sm:text-8xl lg:text-[10rem]' style={{fontFamily:"'Minecraftia', sans-serif"}}>1-3</p>
         <p className='text-2xl mt-[2vh]'>countries</p>
         </div>
         <div className='mx-auto'>
