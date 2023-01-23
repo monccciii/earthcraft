@@ -119,7 +119,7 @@ app.post("/myBusinesses", (req: Request<{
 });
 
 
-app.get("/myNations", (req: Request<{
+app.post("/myNations", (req: Request<{
     userid: string
 }>, res) => {
     const USER_ID = req.body.userid;
