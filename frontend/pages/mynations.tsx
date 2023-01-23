@@ -13,7 +13,7 @@ export default function MyNations() {
   const router = useRouter();
   const [myNationInfo, setMyNationInfo] = useState()
   const [isReady,setIsReady] = useState(false);
-  const url = 'http://localhost:3002/'
+  const url = process.env.API_URL
 
   useEffect(() => { 
     if (!cookie.id) {

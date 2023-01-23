@@ -15,7 +15,7 @@ export default function AllBusinesses() {
 
   
 
-  const url = 'http://localhost:3002/'
+  const url = process.env.API_URL
   function getBusinesses() {
     axios.get(url + 'getBusinesses')
     .then(res => {
