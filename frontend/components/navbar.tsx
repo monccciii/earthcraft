@@ -11,12 +11,19 @@ import { Fragment } from 'react'
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useCookies } from 'react-cookie';
-
+import axios from 'axios';
 
 export default function Navbar() {
   const router = useRouter()
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
-     
+  const url = process.env.NEXT_PUBLIC_APIURL
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
+  useEffect(() => {
+    if (cookie.id) {
+      setIsLoggedIn(true);
+    }
+  }, [cookie.id]);
 
 
   return (
@@ -127,7 +134,7 @@ export default function Navbar() {
       </Transition>
     </Menu>
     
-        {cookie.id ? (
+        {isLoggedIn ? (
          <Menu as="div" className="relative inline-block text-left">
          <div>
            <Menu.Button  className="inline-flex w-full justify-center rounded-md text-white">

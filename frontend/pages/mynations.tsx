@@ -13,7 +13,7 @@ export default function MyNations() {
   const router = useRouter();
   const [myNationInfo, setMyNationInfo] = useState()
   const [isReady,setIsReady] = useState(false);
-  const url = process.env.API_URL
+  const url = process.env.NEXT_PUBLIC_APIURL
 
   useEffect(() => { 
     if (!cookie.id) {

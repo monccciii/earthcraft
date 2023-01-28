@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['upload.wikimedia.org', 'icon2.cleanpng.com']
+    domains: ['upload.wikimedia.org', 'icon2.cleanpng.com', 'images-ext-2.discordapp.net']
   },
   redirects() {
     return [

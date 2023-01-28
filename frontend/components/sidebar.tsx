@@ -1,19 +1,27 @@
+//@ts-nocheck
 import { motion } from 'framer-motion';
 import {BsChatDotsFill, BsFillMapFill, BsMapFill} from 'react-icons/bs'
 import {RiLogoutBoxFill} from 'react-icons/ri'
 import { FaHome, FaShoppingBag, FaBars, FaUserAlt, FaUserCheck, FaUserPlus} from 'react-icons/fa'
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {useState } from 'react'
+import {useState, useEffect} from 'react'
 import { useCookies } from 'react-cookie';
 
 
 function Sidebar () {
     const router= useRouter()
     const [isOpen, setIsOpen] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState();
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
     const toggle = () => setIsOpen(!isOpen);
+
+    useEffect(() => {
+        if (cookie.id) {
+          setIsLoggedIn(true);
+        }
+      }, [cookie.id]);
 
     return (
         <div className=' lg:hidden m-0 p-0 box-border fixed left-0 top-0'>
@@ -61,7 +69,7 @@ function Sidebar () {
                     <div></div>
                     <div>About</div> 
                 </Link>
-                {cookie.id ?  <div className='space-y-8'>
+                {isLoggedIn ?  <div className='space-y-8'>
                 <Link href='/myearthcraft' key={'myearthcraft'} className='flex pl-[10px] gap-5 items-center hover:border-r-4'>
                     <div></div>
                     <div>My Earthcraft</div> 

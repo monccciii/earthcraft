@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 export default function MyBusinesses() {
   const [businessList, setBusinessList] = useState();
   const router = useRouter();
-  const url = process.env.API_URL
+  const url = process.env.NEXT_PUBLIC_APIURL
 
   const [cookie, setCookie, removeCookie] = useCookies(["id", "username", "discriminator", "avatar", "access_token", "refresh_token", "expires_in", "expires_at"]);
 
@@ -52,7 +52,7 @@ export default function MyBusinesses() {
       <div className='bg-[#292929]'>
     <Navbar />
     <p className='mt-[5vh] bg-mcbg1 bg-fixed bg-no-repeat bg-cover py-1 text-center text-white text-4xl sm:text-7xl tracking-widest' style={{fontFamily:"'Minecraftia', sans-serif"}}>MY BUSINESSES</p>
-    {businessList ? 
+    {businessList && businessList.length > 0 ? 
       businessList.map((business, index) => {
         return (
             <div className='mb-[5vh] p-5' key={index}>
@@ -83,7 +83,7 @@ export default function MyBusinesses() {
             </div>
         )
       })
-      : ''}
+      : <div><p className='text-center text-2xl mt-[10vh] text-white'>You have no businesses.</p></div>}
           <div className='pb-[500px]'></div>
 
     </div>
