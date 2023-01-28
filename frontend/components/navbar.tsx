@@ -92,8 +92,8 @@ export default function Navbar() {
         </Menu.Items>
       </Transition>
     </Menu>
-        <li onClick={() => router.push('/businesses')}>Businesses BE</li>
-        <li onClick={() => router.push('/nations')}>Nations BE</li>
+        <li onClick={() => router.push('/businesses')}>Businesses</li>
+        <li onClick={() => router.push('/nations')}>Nations</li>
         <li onClick={() => router.push('/discord')}>Link to Discord </li>
 
         <Menu as="div" className="relative inline-block text-left">
@@ -163,7 +163,7 @@ export default function Navbar() {
                        'block bg-black px-4 py-2 text-sm'
                      )}
                    >
-                     My Businesses BE
+                     My Businesses
                    </Link>
                  )}
                </Menu.Item>
@@ -176,7 +176,7 @@ export default function Navbar() {
                        'block bg-black px-4 py-2 text-sm'
                      )}
                    >
-                     My Nations BE
+                     My Nations
                    </Link>
                  )}
                </Menu.Item>
@@ -187,6 +187,7 @@ export default function Navbar() {
                     document.cookie = null;
                     console.log('removed')
                     if (cookie) for (const key of Object.keys(cookie)) removeCookie(key, { path: "/" });
+                    window.location.reload();
                    }}
                      className={classNames(
                        active ? ' text-slate-200' : 'text-white',

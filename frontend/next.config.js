@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/auth/login',
-        destination: `http://localhost:3002/auth/login`,
+        destination: `${process.env.API_URL}auth/login`,
         permanent: true
       },
     ]
