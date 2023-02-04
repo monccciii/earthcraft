@@ -17,3 +17,4 @@ Thanks to NekoMaru76 for showing me how to set up an Express Typescript backend 
 
 
   
+updates have been moved to the official earthcraft team repository (private)
